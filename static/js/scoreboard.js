@@ -14,7 +14,6 @@ let players = [
     // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
     // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
 ];
-
 // Function to generate a random player's score
 function updatePlayerScore() {
     //The Math can be removed and replaced with static incomming values via fetch
