@@ -1,0 +1,71 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background: #0b0d1b; */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.container {
+    text-align: center;
+    animation: fade-in 3s ease-in-out;
+    z-index: 3;
+}
+
+.intermission-text {
+    font-size: 7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffcc00;
+    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+    margin-bottom: 20px;
+    animation: pulse 3s infinite;
+    z-index: 3;
+}
+
+.countdown {
+
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#space {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
