@@ -1,16 +1,27 @@
-// Array to hold player data
+// Array to hold player data (Fits 10 Players Nicely)
 let players = [
-    { name: "Player 1", score: 150, objectives: "Capture the flag" + "\n" + "Another Objective", avatar: "avatar1.png" },
+    { name: "Player 1", score: 150, objectives: "Capture the flag" + "  |  " + "Another Objective", avatar: "avatar2.png" },
     { name: "Player 2", score: 200, objectives: "Defend the base", avatar: "avatar2.png" },
     { name: "Player 3", score: 100, objectives: "Collect 10 items", avatar: "avatar3.png" },
     { name: "Player 4", score: 175, objectives: "Secure the area", avatar: "avatar4.png" },
     { name: "Player 5", score: 800, objectives: "Eat some Pickels", avatar: "avatar5.png" },
     { name: "Player 6", score: 266, objectives: "Take Out the Trash", avatar: "avatar5.png" },
     { name: "Player 7", score: 240, objectives: "Squeez a wet sock", avatar: "avatar5.png" },
-    { name: "Player 8", score: 24, objectives: "Look at a rock ", avatar: "avatar5.png" },
-    { name: "Player 9", score: 22, objectives: "Escort the train", avatar: "avatar5.png" },
-    { name: "Player 10", score: 22, objectives: "Drink Some Water", avatar: "avatar5.png" },
+    // { name: "Player 8", score: 24, objectives: "Look at a rock ", avatar: "avatar5.png" },
+    // { name: "Player 9", score: 22, objectives: "Escort the train", avatar: "avatar5.png" },
+    // { name: "Player 10", score: 22, objectives: "Drink Some Water", avatar: "avatar5.png" },
 ];
+//This Function will fetch JSON from a player.json file
+// function fetchPlayersData() {
+//     return fetch('players.json')
+//         .then(response => response.json())
+//         .catch(error => {
+//             console.error('Error fetching player data:', error);
+//             return []; // Return an empty array in case of an error
+//         });
+// }
+
+
 
 // Function to generate a random player's score
 function updatePlayerScore() {
@@ -30,9 +41,7 @@ function updatePlayerScore() {
 function updateLeaderboard() {
     const leaderboardContainer = document.getElementById('leaderboard');
     const playerCards = Array.from(leaderboardContainer.children);
-
     const containerHeight = leaderboardContainer.clientHeight;
-
     // Calculate the height each player card should take (e.g., leaving 5px gap between cards)
     const cardHeight = (containerHeight - (players.length - 5) * 5) / players.length;
 
@@ -110,9 +119,15 @@ function updateLeaderboard() {
 // Event listener for the refresh button
 //document.getElementById('refreshButton').addEventListener('click', updatePlayerScore);
 
-// Initial leaderboard display
+// Initialize leaderboard display
 document.addEventListener('DOMContentLoaded', () => {
     const leaderboardContainer = document.getElementById('leaderboard');
+    //
+    //This is for Fetching users from a json File
+    //
+    // fetchPlayersData().then(players => {
+    //     buildLeaderboard(players);
+    // NOTE Make sure you uncomment the last 2 lines
     players.forEach(player => {
         // Create Player Info Container
         const playerCard = document.createElement('div');
@@ -153,5 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+
     updateLeaderboard();
 });
+//});
