@@ -1,19 +1,17 @@
 // Array to hold player data
 let players = [
-    { name: 'Joe', score: 0, avatar: 'test_picture.png' },
-    { name: 'Adam', score: 0, avatar: 'test_picture.png' },
-    { name: 'Stefan', score: 0, avatar: 'test_picture.png' },
-    { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
-    // { name: 'Other Dude', score: 0, avatar: 'test_picture.png' },
+    { name: "Player 1", score: 150, objectives: "Capture the flag" + "\n" + "Another Objective", avatar: "avatar1.png" },
+    { name: "Player 2", score: 200, objectives: "Defend the base", avatar: "avatar2.png" },
+    { name: "Player 3", score: 100, objectives: "Collect 10 items", avatar: "avatar3.png" },
+    { name: "Player 4", score: 175, objectives: "Secure the area", avatar: "avatar4.png" },
+    { name: "Player 5", score: 800, objectives: "Eat some Pickels", avatar: "avatar5.png" },
+    { name: "Player 6", score: 266, objectives: "Take Out the Trash", avatar: "avatar5.png" },
+    { name: "Player 7", score: 240, objectives: "Squeez a wet sock", avatar: "avatar5.png" },
+    { name: "Player 8", score: 24, objectives: "Look at a rock ", avatar: "avatar5.png" },
+    { name: "Player 9", score: 22, objectives: "Escort the train", avatar: "avatar5.png" },
+    { name: "Player 10", score: 22, objectives: "Drink Some Water", avatar: "avatar5.png" },
 ];
+
 // Function to generate a random player's score
 function updatePlayerScore() {
     //The Math can be removed and replaced with static incomming values via fetch
@@ -28,7 +26,6 @@ function updatePlayerScore() {
     // Update the leaderboard reordering
     updateLeaderboard();
 }
-
 // Function to animate the leaderboard reordering
 function updateLeaderboard() {
     const leaderboardContainer = document.getElementById('leaderboard');
@@ -38,7 +35,6 @@ function updateLeaderboard() {
 
     // Calculate the height each player card should take (e.g., leaving 5px gap between cards)
     const cardHeight = (containerHeight - (players.length - 5) * 5) / players.length;
-
 
     // Store the initial positions of all player cards
     playerCards.forEach(card => {
@@ -118,34 +114,44 @@ function updateLeaderboard() {
 document.addEventListener('DOMContentLoaded', () => {
     const leaderboardContainer = document.getElementById('leaderboard');
     players.forEach(player => {
-        //Create Player Info Container
-        //These are the components that go into the individual leaderboard stats
+        // Create Player Info Container
         const playerCard = document.createElement('div');
-        playerCard.classList.add('player-card');
+        playerCard.className = "player-card";
         playerCard.dataset.name = player.name;
 
+        // Create the Avatar
         const avatarImg = document.createElement('img');
         avatarImg.src = player.avatar;
-        avatarImg.alt = 'Player Avatar';
         avatarImg.classList.add('avatar');
-        //Add player Card
+
+        // Create Player Name
+        const playerName = document.createElement('p');
+        playerName.textContent = player.name;
+        playerName.classList.add('player-name'); // Add class for styling
+
+        // Create player info (score and objectives)
         const playerInfo = document.createElement('div');
         playerInfo.classList.add('player-info');
-        // Add player name and current Score
-        const playerName = document.createElement('h1');
-        playerName.textContent = player.name;
+
         const playerScore = document.createElement('p');
         playerScore.textContent = `Score: ${player.score}`;
 
-        playerCard.appendChild(avatarImg);
-        playerCard.appendChild(playerInfo);
-        playerInfo.appendChild(playerName);
-        playerInfo.appendChild(playerScore);
+        const playerObjective = document.createElement('p')
+        playerObjective.textContent = `Objective ${player.objectives}`
 
+        // Append avatar and name to the player card
+        playerCard.appendChild(avatarImg);
+        playerCard.appendChild(playerName);
+
+        // Append player info (score) to the player card
+        playerInfo.appendChild(playerScore);
+        playerInfo.appendChild(playerObjective)
+        playerCard.appendChild(playerInfo);
 
         // Append the player card to the leaderboard
         leaderboardContainer.appendChild(playerCard);
     });
+
 
     updateLeaderboard();
 });
