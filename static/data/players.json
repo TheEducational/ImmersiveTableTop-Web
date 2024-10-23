@@ -7,19 +7,19 @@
     },
     {
         "name": "Adam",
-        "score": 1001,
+        "score": 200,
         "objectives": "Defend the base",
         "avatar": "../static/UI/emirates-of-hacan.png"
     },
     {
         "name": "Stefan",
-        "score": 5,
+        "score": 1001,
         "objectives": "Collect 10 items",
         "avatar": "../static/UI/emirates-of-hacan.png"
     },
     {
-        "name": "Player 4",
-        "score": 30,
+        "name": "Adam",
+        "score": 200,
         "objectives": "Secure the area",
         "avatar": "../static/UI/emirates-of-hacan.png"
     },
