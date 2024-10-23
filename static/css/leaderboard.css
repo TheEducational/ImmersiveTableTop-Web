@@ -21,10 +21,9 @@
     align-items: center;
     justify-content: flex-start;
     padding: 2%;
-    background-color: rgb(133, 132, 132);
+    background-color: rgba(53, 78, 224, 0.848);
     /* border: 2px solid #000000; */
-
-    transition: transform 1s ease, height 0.5s ease;
+    transition: transform 3s ease, height 0.5s ease;
     /* Add height transition for smooth scaling */
     max-width: 100%;
     padding-left: 5%;
@@ -33,8 +32,8 @@
 }
 
 .avatar {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     /* Make Avatar A Crircle */
     border-radius: 50%;
     margin-bottom: 5px;
@@ -44,25 +43,28 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-
+    color: white;
     font-size: 14px;
 }
 
 .player-info {
     text-align: center;
     flex-grow: 1;
+    color: white;
     /* Make sure player info takes remaining space */
 }
 
 .player-info h3 {
     font-size: 0.5em;
     margin: 0;
+    color: white;
 
 }
 
 .player-info p {
     font-size: 1em;
     margin: 0;
+    color: white;
 }
 
 .highlighted {

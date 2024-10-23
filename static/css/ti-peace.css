@@ -1,46 +1,61 @@
-
 /* Ensure the body and html elements take up the full viewport */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden;
+    /* Prevent scrolling */
     /*background-color: black;*/
+    background-color: black;
 }
 
 
 /* Title Text */
 .title-text {
-    text-align: center; /* Center the text */
-    font-size: 90px; /* Large font size */
+    text-align: center;
+    /* Center the text */
+    font-size: 90px;
+    /* Large font size */
     font-family: 'Nasalization', sans-serif;
-    color: rgb(0, 0, 255); /* Change to your desired color */
-    margin: 40px 0; /* Add some spacing above and below */
-    z-index: 10; /* Ensure it is above other elements */
-    position: relative; /* To keep it in the normal flow */
+    color: rgb(0, 0, 255);
+    /* Change to your desired color */
+    margin: 40px 0;
+    /* Add some spacing above and below */
+    z-index: 10;
+    /* Ensure it is above other elements */
+    position: relative;
+    /* To keep it in the normal flow */
 }
 
 /* Fullscreen video */
 video {
-    position: absolute; /* Position the video absolutely */
+    position: absolute;
+    /* Position the video absolutely */
     top: 0;
     left: 0;
-    width: 100%;      /* Full viewport width */
-    height: 100%;     /* Full viewport height */
-    object-fit: cover; /* Cover the area without distortion */
-    z-index: -1;      /* Send the video to the back */
+    width: 100%;
+    /* Full viewport width */
+    height: 100%;
+    /* Full viewport height */
+    object-fit: cover;
+    /* Cover the area without distortion */
+    z-index: -1;
+    /* Send the video to the back */
 }
 
- /* Overlay styles for UI elements */
+/* Overlay styles for UI elements */
 .overlay {
     position: absolute;
-    z-index: 1; /* Bring overlays to the front */
+    z-index: 1;
+    /* Bring overlays to the front */
 }
 
 .left-frame {
     position: absolute;
-    left: 2%; /* Distance from the right edge of the screen */
+    left: 2%;
+    /* Distance from the right edge of the screen */
     top: 18%;
     width: 45%;
     height: 55%;
@@ -56,14 +71,17 @@ video {
     left: 0;
     width: 100%;
     height: 75%;
-    background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent red */
-    z-index: 1; /* Make sure it's above the video but inside the frame */
+    background-color: rgba(0, 0, 255, 0.3);
+    /* Semi-transparent red */
+    z-index: 1;
+    /* Make sure it's above the video but inside the frame */
 }
 
 /* Styling for the right frame container */
 .right-frame {
     position: absolute;
-    right: 2%; /* Distance from the right edge of the screen */
+    right: 2%;
+    /* Distance from the right edge of the screen */
     top: 0;
     width: auto;
     height: 90%;
@@ -78,15 +96,19 @@ video {
     top: -1%;
     width: 100%;
     height: 100%;
-    object-fit: contain; 
-    z-index: 1; /* make sure the video is on top of the gif*/
-    clip-path: inset(0 4% 0 4%); /* video cropping */
+    object-fit: contain;
+    z-index: 1;
+    /* make sure the video is on top of the gif*/
+    clip-path: inset(0 4% 0 4%);
+    /* video cropping */
 }
 
 /* Specific styles for the frame image */
 .frame-img {
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
+    width: 100%;
+    /* Full width of the container */
+    height: 100%;
+    /* Full height of the container */
     /*object-fit: contain; /* Ensure it maintains aspect ratio */
     z-index: 2;
 }
@@ -96,11 +118,15 @@ video {
     position: absolute;
     top: -1%;
     left: 0;
-    width: 100%; /* Make the GIF fit the right frame */
+    width: 100%;
+    /* Make the GIF fit the right frame */
     height: 100%;
-    object-fit: contain; /* Maintain the aspect ratio of the GIF */
-    z-index: 1; /* Make sure the GIF appears below the frame */
-    clip-path: inset(0 4% 0 4%); /* GIF cropping */
+    object-fit: contain;
+    /* Maintain the aspect ratio of the GIF */
+    z-index: 1;
+    /* Make sure the GIF appears below the frame */
+    clip-path: inset(0 4% 0 4%);
+    /* GIF cropping */
 }
 
 /* NEWS ALERT FEED */
@@ -130,7 +156,8 @@ video {
 
 @keyframes scroll {
     0% {
-        transform: translateX(15%); /* Lower percentage ensures the text starts scrolling already on the screen. */
+        transform: translateX(15%);
+        /* Lower percentage ensures the text starts scrolling already on the screen. */
     }
 
     100% {
@@ -151,8 +178,10 @@ video {
     position: fixed;
     bottom: 10%;
     left: 3%;
-    font-size: 40px; /* Large font size */
+    font-size: 40px;
+    /* Large font size */
     font-family: 'Nasalization', sans-serif;
     font-style: italic;
-    color: rgb(0, 0, 220); /* Change to your desired color */
+    color: rgb(0, 0, 220);
+    /* Change to your desired color */
 }

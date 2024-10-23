@@ -1,133 +1,46 @@
-// Array to hold player data (Fits 10 Players Nicely)
-let players = [
-    { name: "Player 1", score: 150, objectives: "Capture the flag" + "  |  " + "Another Objective", avatar: "avatar2.png" },
-    { name: "Player 2", score: 200, objectives: "Defend the base", avatar: "avatar2.png" },
-    { name: "Player 3", score: 100, objectives: "Collect 10 items", avatar: "avatar3.png" },
-    { name: "Player 4", score: 175, objectives: "Secure the area", avatar: "avatar4.png" },
-    { name: "Player 5", score: 800, objectives: "Eat some Pickels", avatar: "avatar5.png" },
-    { name: "Player 6", score: 266, objectives: "Take Out the Trash", avatar: "avatar5.png" },
-    { name: "Player 7", score: 240, objectives: "Squeez a wet sock", avatar: "avatar5.png" },
-    // { name: "Player 8", score: 24, objectives: "Look at a rock ", avatar: "avatar5.png" },
-    // { name: "Player 9", score: 22, objectives: "Escort the train", avatar: "avatar5.png" },
-    // { name: "Player 10", score: 22, objectives: "Drink Some Water", avatar: "avatar5.png" },
-];
-//This Function will fetch JSON from a player.json file
-// function fetchPlayersData() {
-//     return fetch('players.json')
-//         .then(response => response.json())
-//         .catch(error => {
-//             console.error('Error fetching player data:', error);
-//             return []; // Return an empty array in case of an error
-//         });
-// }
+//Set the Default Array
+let players = []
+let previousPlayersData = [];
+async function fetchPlayersData() {
+
+    try {
+        const response = await fetch('../static/data/players.json'); // Replace with actual path to your JSON file
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        // Automatically convert the response into a JavaScript array using .json()
+        players = await response.json();
+        players = data.sort((a, b) => b.score - a.score);
+        console.log(players.length)
+        console.log(players)
+
+        previousPlayersData = JSON.parse(JSON.stringify(players));
 
 
+        console.log('Query fetched and converted to array:', players);
+        updateLeaderboard()
+            // return players
+            // Now that the array is ready, update the leaderboard
+            ;
+    } catch (error) {
+        console.error('Players Updated');
+    }
 
-// Function to generate a random player's score
-function updatePlayerScore() {
-    //The Math can be removed and replaced with static incomming values via fetch
-    const playerScoreIndex = Math.floor(Math.random() * players.length);
-    players[playerScoreIndex].score = newScore;
-    //Grab the Score and update
-    const scoreElement = document.getElementById('score');
-    //If you want to set other valuse a modification might be needed below
-    scoreElement.textContent = `${players[playerScoreIndex].name} Score: ${players[playerScoreIndex].score}`;
-    //console.log(scoreElement)
-
-    // Update the leaderboard reordering
-    updateLeaderboard();
 }
-// Function to animate the leaderboard reordering
+//Function To Update the Leaderboard
 function updateLeaderboard() {
     const leaderboardContainer = document.getElementById('leaderboard');
-    const playerCards = Array.from(leaderboardContainer.children);
-    const containerHeight = leaderboardContainer.clientHeight;
-    // Calculate the height each player card should take (e.g., leaving 5px gap between cards)
-    const cardHeight = (containerHeight - (players.length - 5) * 5) / players.length;
+    //Clears the Player Container So Duplicates Dont Appear
+    leaderboardContainer.innerHTML = '';
+    //If No Users Print Error
+    if (players.length === 0) {
+        console.error('Player array is empty. Cannot update leaderboard.');
+        return;
+    }
+    // console.log(players)
 
-    // Store the initial positions of all player cards
-    playerCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        card.dataset.initialTop = rect.top;
-    });
-
-    // Sort players by score in descending order
-    players.sort((a, b) => b.score - a.score);
-
-    // Get the highest score
-    const topScore = players[0].score;
-
-    // Check if there's a tie for the topscore
-    const isTie = players.filter(player => player.score === topScore).length > 1;
-
-    // Rebuild the leaderboard
-    players.forEach((player, index) => {
-        const playerCard = playerCards.find(card => card.dataset.name === player.name);
-        playerCard.style.height = `${cardHeight}px`;
-        const playerScore = playerCard.querySelector('.player-info p');
-        playerScore.textContent = `Score: ${player.score}`;
-        // Remove Both Boarders
-        if (player.score === 0 && isTie) {
-            playerCard.classList.remove('highlighted');
-            playerCard.classList.remove('tied');
-
-
-        }
-        //Apply Gold Boarder
-        else if (index === 0 && !isTie) {
-            playerCard.classList.add('highlighted');
-            playerCard.classList.remove('tied');
-
-        }
-        //Apply Silver Boarder and remove gold
-        else if (player.score === topScore) {
-            playerCard.classList.add('tied');
-            playerCard.classList.remove('highlighted');
-            //console.log(player)
-
-        }
-        else {
-            //Remove Both Boarders
-            playerCard.classList.remove('highlighted');
-            playerCard.classList.remove('tied');
-        }
-
-        // reordered playerCard back to the leaderboard this will not cause the refactor
-        leaderboardContainer.appendChild(playerCard);
-    });
-
-    // Calculate new positions and transition
-    playerCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const initialTop = card.dataset.initialTop;
-        const deltaY = initialTop - rect.top;
-
-        // Apply the transform to move the element to its original position
-        card.style.transition = 'none';
-        card.style.transform = `translateY(${deltaY}px)`;
-
-        // Trigger refactor
-        card.getBoundingClientRect();
-
-        // Apply the transition to move it to the new position smoothly
-        //If you are making is quicker make sure this trasision alligns with the one listed in the css file under".playercard"
-        card.style.transition = 'transform 1s ease';
-        card.style.transform = 'translateY(0)';
-    });
-}
-
-// Event listener for the refresh button
-//document.getElementById('refreshButton').addEventListener('click', updatePlayerScore);
-
-// Initialize leaderboard display
-document.addEventListener('DOMContentLoaded', () => {
-    const leaderboardContainer = document.getElementById('leaderboard');
-    //
-    //This is for Fetching users from a json File
-    //
-    // fetchPlayersData().then(players => {
-    //     buildLeaderboard(players);
-    // NOTE Make sure you uncomment the last 2 lines
+    //Create The Player Card For Each User
     players.forEach(player => {
         // Create Player Info Container
         const playerCard = document.createElement('div');
@@ -166,9 +79,114 @@ document.addEventListener('DOMContentLoaded', () => {
         // Append the player card to the leaderboard
         leaderboardContainer.appendChild(playerCard);
     });
+    const playerCards = Array.from(leaderboardContainer.children);
+    const containerHeight = leaderboardContainer.clientHeight;
+
+    // Calculate the height each player card should take (e.g., leaving 5px gap between cards)
+    const cardHeight = (containerHeight - (players.length - 5) * 5) / players.length;
+
+    // Store the initial positions of all player cards
+    playerCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        card.dataset.initialTop = rect.top;
+    });
+
+    // Sort players by score in descending order
+    players.sort((a, b) => b.score - a.score);
+
+    // Get the highest score
+    const topScore = players[0].score;
+
+    // Check if there's a tie for the topscore
+    const isTie = players.filter(player => player.score === topScore).length > 1;
 
 
+    // Rebuild the leaderboard Using the Correct Highlighting
+    players.forEach((player, index) => {
+        const playerCard = playerCards.find(card => card.dataset.name === player.name);
+        playerCard.style.height = `${cardHeight}px`;
+        const playerScore = playerCard.querySelector('.player-info p');
+        playerScore.textContent = `Score: ${player.score}`;
+        // Remove Both Boarders
+        if (player.score === 0 && isTie) {
+            playerCard.classList.remove('highlighted');
+            playerCard.classList.remove('tied');
 
-    updateLeaderboard();
+
+        }
+        //Apply Gold Boarder
+        else if (index === 0 && !isTie) {
+            playerCard.classList.add('highlighted');
+            playerCard.classList.remove('tied');
+
+        }
+        //Apply Silver Boarder and remove gold
+        else if (player.score === topScore) {
+            playerCard.classList.add('tied');
+            playerCard.classList.remove('highlighted');
+            //console.log(player)
+
+        }
+        else {
+            //Remove Both Boarders
+            playerCard.classList.remove('highlighted');
+            playerCard.classList.remove('tied');
+        }
+
+        // reordered playerCard back to the leaderboard this will not cause the refactor
+        leaderboardContainer.appendChild(playerCard);
+    });
+    animatePlayerCards()
+    // Calculate new positions and transition
+
+}
+//When a Change is updated on the JSON This will check the new score agains the old score. If the Score is the same no change if the score changes Change the users "currentRank"
+function animatePlayerCards() {
+    let playerCards = document.querySelectorAll('.player-card');  // Ensure it's scoped to this function
+
+    playerCards.forEach(card => {
+        const playerName = card.dataset.name;
+        const currentPlayer = players.find(p => p.name === playerName);
+        const previousPlayer = previousPlayersData.find(p => p.name === playerName);
+
+        if (!previousPlayer) {
+            console.error(`Previous player data not found for ${playerName}`);
+            return;
+        }
+
+        // Compare the current and previous scores
+        if (currentPlayer && (currentPlayer.score !== previousPlayer.score || currentPlayer.currentRank !== previousPlayer.currentRank)) {
+            const rect = card.getBoundingClientRect();
+            const initialTop = card.dataset.initialTop;
+            //If No Change to The Top Return No Change
+            if (!initialTop) return;
+
+            const deltaY = initialTop - rect.top;  // Calculate the difference in positions
+
+            // Apply the transform to move the element to its original position
+            card.style.transition = 'none';
+            card.style.transform = `translateY(${deltaY}px)`;
+
+            // Trigger refactor
+            card.getBoundingClientRect();  // Forces reflow, required for smooth transition
+
+            // Apply the transition to move it to the new position smoothly
+            card.style.transition = 'transform 2s ease';
+            card.style.transform = 'translateY(0)';
+        }
+    });
+
+    // Update previous player data after animation
+    previousPlayersData = JSON.parse(JSON.stringify(players));
+}
+//MAIN FUNCTION TO UPDATE LEADERBOARD
+function refreshLeaderboard() {
+    fetchPlayersData().then(() => {
+        updateLeaderboard();
+    });
+}
+// Initialize leaderboard  DOM Content
+document.addEventListener('DOMContentLoaded', () => {
+    const leaderboardContainer = document.getElementById('leaderboard');
+    refreshLeaderboard();
 });
-//});

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Joe",
+        "score": 0,
+        "objectives": "Capture the flag | Another Objective",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    },
+    {
+        "name": "Adam",
+        "score": 1001,
+        "objectives": "Defend the base",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    },
+    {
+        "name": "Stefan",
+        "score": 5,
+        "objectives": "Collect 10 items",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    },
+    {
+        "name": "Player 4",
+        "score": 30,
+        "objectives": "Secure the area",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    },
+    {
+        "name": "Player 5",
+        "score": 0,
+        "objectives": "Eat some Pickles",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    },
+    {
+        "name": "Player 6",
+        "score": 100,
+        "objectives": "Take Out the Trash",
+        "avatar": "../static/UI/emirates-of-hacan.png"
+    }
+]
