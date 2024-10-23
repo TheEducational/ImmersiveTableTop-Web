@@ -24,7 +24,7 @@ async function fetchPlayersData() {
             // Now that the array is ready, update the leaderboard
             ;
     } catch (error) {
-        console.error('Players Updated');
+        console.log('Player Profiles Updated');
     }
 
 }
@@ -81,26 +81,19 @@ function updateLeaderboard() {
     });
     const playerCards = Array.from(leaderboardContainer.children);
     const containerHeight = leaderboardContainer.clientHeight;
-
     // Calculate the height each player card should take (e.g., leaving 5px gap between cards)
     const cardHeight = (containerHeight - (players.length - 5) * 5) / players.length;
-
     // Store the initial positions of all player cards
     playerCards.forEach(card => {
         const rect = card.getBoundingClientRect();
         card.dataset.initialTop = rect.top;
     });
-
     // Sort players by score in descending order
     players.sort((a, b) => b.score - a.score);
-
     // Get the highest score
     const topScore = players[0].score;
-
     // Check if there's a tie for the topscore
     const isTie = players.filter(player => player.score === topScore).length > 1;
-
-
     // Rebuild the leaderboard Using the Correct Highlighting
     players.forEach((player, index) => {
         const playerCard = playerCards.find(card => card.dataset.name === player.name);
@@ -111,7 +104,6 @@ function updateLeaderboard() {
         if (player.score === 0 && isTie) {
             playerCard.classList.remove('highlighted');
             playerCard.classList.remove('tied');
-
 
         }
         //Apply Gold Boarder
@@ -150,7 +142,7 @@ function animatePlayerCards() {
         const previousPlayer = previousPlayersData.find(p => p.name === playerName);
 
         if (!previousPlayer) {
-            console.error(`Previous player data not found for ${playerName}`);
+            console.log(`Stats Pulled for ${players.length} players`);
             return;
         }
 
