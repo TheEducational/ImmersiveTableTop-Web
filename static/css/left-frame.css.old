@@ -1,0 +1,66 @@
+.left-frame {
+    left: 2.3%;
+    top: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;  /* 50% of viewport width */
+    height: 30vw; /* 30% of viewport width */
+    max-width: 75vh; /* Ensure it doesn't exceed the viewport height */
+    max-height: 100vh; /* Cap the height at 50% of the viewport height */
+    margin: 0 auto; /* Center the container horizontally */
+    background-color: rgba(0, 0, 255, 0.3);
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent overflow */
+    color: rgba(255, 255, 255, 1)
+}
+
+.left-frame table {
+    width: 100%; /* Make the table fill the container */
+    height: 100%; /* Ensure the table takes up full container height */
+    border-collapse: collapse;
+    /*table-layout: fixed; /* Ensure even distribution of cells */
+    font-size: 0.8vw; /* Smaller, responsive font size */
+}
+
+/* Define column sizes with fixed layout */
+.left-frame table colgroup col.avatar-column {
+    width: 10%; /* Avatar column width */
+}
+
+.left-frame table colgroup col.name-column {
+    width: 20%; /* Name column width */
+}
+
+.left-frame table colgroup col.score-column {
+    width: 10%; /* Score column width */
+}
+
+.left-frame td {
+    padding: 0.1vw; /* Reduce padding to minimize empty space */
+    text-align: center;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    font-size: 0.8vw; /* Scale text with screen */
+}
+
+.left-frame img {
+    max-width: 2.5vw; /* Reduce avatar size */
+    height: auto;
+    display: block; /* Prevent inline-block spacing issues */
+    border-radius: 50%; /* Rounded Avatar Portraits */
+}
+
+.left-frame ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.left-frame li {
+    padding: 0.3vw 0; /* Reduce padding for list items */
+    font-size: 0.7vw; /* Scale down the font size */
+}

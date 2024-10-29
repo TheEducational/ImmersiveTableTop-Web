@@ -1,0 +1,82 @@
+async function fetchData() {
+    try {
+        const response = await fetch('/static/data/players.json');
+        const data = await response.json();
+        numPlayers = data.length
+
+        // Sort players by score, highest to lowest
+        data.sort((a, b) => a.score - b.score);
+
+        // Clear existing rows
+        const tableBody = document.querySelector('#playerTable tbody');
+        tableBody.innerHTML = '';
+
+        // Create three rows: one for scores, one for avatars, and one for names
+        const scoreRow = document.createElement('tr');
+        const avatarRow = document.createElement('tr');
+        const nameRow = document.createElement('tr');
+
+        // Limit the data to numPlayers
+        const limitedData = data.slice(0, numPlayers);
+
+        var highScore = 0
+        var topPlayers = []
+        limitedData.forEach(player => {
+            // Score cell
+            const scoreCell = document.createElement('td');
+            scoreCell.textContent = player.score;
+            if (player.score > highScore) {
+                highScore = player.score; // Update the highest score
+                topPlayers.length = 0; // Clear the previous top players
+                topPlayers.push(player.avatar); // Add the new top player
+            } else if (player.score === highScore) {
+                topPlayers.push(player.avatar); // Add the player in case of a tie
+            }
+            scoreRow.appendChild(scoreCell);
+
+            // Avatar cell
+            const avatarCell = document.createElement('td');
+            const avatarImg = document.createElement('img');
+            avatarImg.src = player.avatar;
+            avatarImg.alt = `${player.name}'s Avatar`;
+            avatarImg.classList.add('avatar'); // Add CSS class for styling
+            avatarCell.appendChild(avatarImg);
+            avatarRow.appendChild(avatarCell);
+
+            // Name cell
+            const nameCell = document.createElement('td');
+            nameCell.textContent = player.name;
+            nameRow.appendChild(nameCell);
+        });
+
+        // If there are at least 4 people in a tie
+        var newBorder
+        if (topPlayers.length < 5) {
+            if (topPlayers.length === 1){
+                newBorder = "gold-border"
+            } else {
+                newBorder = "silver-border"
+            }
+
+            topPlayers.forEach(targetSrc => {
+                // Find an image with the matching source in avatarRow, and give it a class that will outline its borders with either gold or silver
+                const imgElement = avatarRow.querySelector(`img[src="${targetSrc}"]`);
+                        
+                if (imgElement) {
+                    imgElement.classList.add(newBorder); // Apply the new class directly to the img tag
+                }
+            });
+        }
+
+        // Append the three rows to the table body
+        tableBody.appendChild(scoreRow);
+        tableBody.appendChild(avatarRow);
+        tableBody.appendChild(nameRow);
+    } catch (error) {
+        console.error('Error fetching player data:', error);
+    }
+}
+
+// Fetch data initially and set an interval to continuously refresh the table
+fetchData();
+setInterval(fetchData, 10000);  // Fetch every 10 seconds

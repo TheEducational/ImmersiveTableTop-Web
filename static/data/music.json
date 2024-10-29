@@ -1,0 +1,22 @@
+{
+    "override": "",
+    "currentlyPlaying": {
+        "songId": "1",
+        "currentTime": 504,
+        "maxTime": 504
+    },
+    "available": {
+        "1": {
+            "song": "/static/Music/TI4/Peace/MATAMIA - ENERVATED.mp3",
+            "category": "Peace"
+        },
+        "2": {
+            "song": "/static/Music/TI4/War/Payday 2 - Razormind (Assault).mp3",
+            "category": "War"
+        },
+        "3": {
+            "song": "/static/Music/TI4/Peace/TEST_SONG.mp3",
+            "category": "Peace"
+        }
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersion Control Panel</title>
+    <link href="" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6A0DAD;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4B0082;
+            color: #ffffff;
+        }
+
+        /* Modal default hidden */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top of everything */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scrolling if content is too large */
+            background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+        }
+    
+        /* Modal Content */
+        .modal-content {
+            background-color: #282c34; /* Match body background */
+            color: #ffffff; /* White text */
+            margin: 15% auto; /* Center the modal */
+            padding: 20px;
+            border: 1px solid #4B0082; /* Border color to match buttons */
+            width: 60%; /* Width of modal content */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Slightly darker shadow */
+        }
+    
+        /* Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: #ffffff; /* Change to white on hover */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .objective-item {
+            display: flex;
+            justify-content: space-between; /* Space between text and buttons */
+            align-items: center; /* Align items vertically */
+            margin: 5px 0; /* Space between items */
+        }
+        
+        .objective-item button {
+            margin-left: 10px; /* Space between text and button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Player Management</h1>
+
+    <div id="objective-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Players Table -->
+    <div id="tableContainer"></div>
+    <button id="addPlayerBtn">Add New Player</button>
+    <button id="backToMenuBtn">Back to Menu</button>
+
+    <!-- Load players file -->
+    <script>
+        var playersFileUrl = "{{ url_for('static', filename='data/players.json') }}"; 
+        var objectivesFileUrl = "{{ url_for('static', filename='data/objectives.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/players.js') }}"></script>
+</body>
+</html>

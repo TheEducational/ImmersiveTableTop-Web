@@ -4,18 +4,75 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immersion Control Panel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-panel-ti.css') }}">
+    <style>
+      body {
+          font-family: 'Orbitron', sans-serif;
+          background: url("{{ url_for('static', filename='Backgrounds/TI4/admin-bg.png') }}");
+          background-size: cover;
+          color: #ffffff;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          height: 100vh; /* Full viewport height */
+      }
+
+      h1 {
+          font-size: 4em; /* Increased title size */
+          margin: 20px 0;
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+          text-align: center;
+      }
+
+      .button-container {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1; /* Take all available space */
+          justify-content: space-between; /* Evenly distribute buttons */
+          align-items: center; /* Center buttons horizontally */
+          padding: 20px; /* Padding around the buttons */
+      }
+
+      a.button {
+          background-color: #4B0082; /* Dark Purple */
+          color: white;
+          border: none;
+          padding: 15px;
+          font-size: 2em; /* Increased button text size */
+          cursor: pointer;
+          border-radius: 15px;
+          transition: background-color 0.3s, transform 0.2s;
+          width: 100%; /* Full width */
+          flex-grow: 1; /* Allow buttons to grow and fill space */
+          margin: 5px 0; /* Margin between buttons */
+          text-align: center; /* Center text in anchor */
+          text-decoration: none; /* Remove underline */
+      }
+
+      a.button:hover {
+          background-color: #6A0DAD; /* Lighter Purple */
+          transform: scale(1.05);
+      }
+
+      @media (max-width: 600px) {
+          h1 {
+              font-size: 2.5em; /* Adjusted title size for smaller screens */
+          }
+        
+          a.button {
+              font-size: 1.2em; /* Adjusted button/link text size for smaller screens */
+          }
+      }
+    </style>
 </head>
 <body>
     <h1>Immersion Control Panel</h1>
     <div class="button-container">
-        <button><a href="/admin/players/">Players</a></button>
-        <button><a href="/admin/objectives/">Objectives</a></button>
-        <button><a href="/admin/music/">Music</a></button>
-        <button><a href="/admin/video/">Video</a></button>
-        <button><a href="/admin/log">View Log</a></button>
-        <button><a href="#">Reset Game</a></button>
+        <a class="button" href="/admin/players">Players</a>
+        <a class="button" href="/admin/objectives">Objectives</a>
+        <a class="button" href="/admin/music">Music</a>
+        <a class="button" href="/admin/log">View Log</a>
+        <a class="button" href="#">Reset Game</a>
     </div>
 </body>
 </html>

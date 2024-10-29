@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersion Control Panel</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #logContainer {
+            width: 100%;
+            overflow-x: auto;  /* Enables horizontal scrolling */
+            white-space: pre;   /* Preserves whitespace for log format */
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #333;
+            border-radius: 5px;
+            margin-bottom: 20px; /* Space between log container and button */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #6A0DAD;
+        }
+    </style>
+</head>
+<body>
+    <h1>Log Viewer </h1>
+
+    <button id="backToMenuBtn">Back To Menu</button>
+
+    <!-- Log Container -->
+    <div id="logContainer">
+        Loading log file...
+    </div>
+    <script>
+        logFileUrl = "/static/data/log.txt"
+    </script>
+    <script src="{{ url_for('static', filename='js/log.js') }}"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "name": "Joe",
         "score": 0,
         "objectives": "Capture the flag | Another Objective",
@@ -34,5 +35,59 @@
         "score": 100,
         "objectives": "Take Out the Trash",
         "avatar": "../static/UI/emirates-of-hacan.png"
+=======
+        "name": "Stefan",
+        "points": 1,
+        "objectives": [
+            "Have 4 or more structures. (I)"
+        ],
+        "avatar": "/static/UI/sol.png"
+    },
+    {
+        "name": "Joseph",
+        "points": 1,
+        "objectives": [
+            "Destroy another player's war sun or flagship. (I) (Secret)"
+        ],
+        "avatar": "/static/UI/l1.png"
+    },
+    {
+        "name": "Adam",
+        "points": 0,
+        "objectives": [],
+        "avatar": "/static/UI/hacan.png"
+    },
+    {
+        "name": "Max",
+        "points": 2,
+        "objectives": [
+            "Spend 5 Trade Goods (II)"
+        ],
+        "avatar": "/static/UI/muaat.png"
+    },
+    {
+        "name": "Adam",
+        "points": 0,
+        "objectives": [],
+        "avatar": "/static/UI/saar.png"
+    },
+    {
+        "name": "Adam",
+        "points": 0,
+        "objectives": [],
+        "avatar": "/static/UI/arborec.png"
+    },
+    {
+        "name": "Adam",
+        "points": 0,
+        "objectives": [],
+        "avatar": "/static/UI/creuss.png"
+    },
+    {
+        "name": "Adam",
+        "points": 0,
+        "objectives": [],
+        "avatar": "/static/UI/mentak.png"
+>>>>>>> 7b54b968cbd6d52e8e39de2750237ad58d8c4da1
     }
 ]

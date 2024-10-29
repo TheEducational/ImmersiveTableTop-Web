@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immersion Control Panel</title>
+    <link href="" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6A0DAD;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4B0082;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Objectives Management</h1>
+
+    <!-- Players Table -->
+    <div id="tableContainer"></div>
+    <button id="addObjectiveBtn">Add New Objective</button>
+    <button id="backToMenuBtn">Back To Menu</button>
+
+    <!-- Load players file -->
+    <script>
+        var objectivesFileUrl = "{{ url_for('static', filename='data/objectives.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/objectives.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/logger.js') }}"></script>
+</body>
+</html>

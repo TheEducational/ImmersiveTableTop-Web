@@ -11,7 +11,6 @@ body {
     background-color: black;
 }
 
-
 /* Title Text */
 .title-text {
     text-align: center;
@@ -52,6 +51,7 @@ video {
     /* Bring overlays to the front */
 }
 
+<<<<<<< HEAD
 .left-frame {
     position: absolute;
     left: 2%;
@@ -75,6 +75,66 @@ video {
     /* Semi-transparent red */
     z-index: 1;
     /* Make sure it's above the video but inside the frame */
+=======
+.table-container {
+    width: 100%;
+}
+
+#playerTable {
+    width: 40%;
+    border-collapse: collapse;
+    font-size: 18px;
+    text-align: center;
+    table-layout: fixed; /* Ensure fixed table layout */
+    background-color: rgba(0, 0, 255, 0.3);
+    left: 3%;
+    position: fixed;
+    top: 55%;
+    border-radius: 1%;
+}
+
+#objectivesTable {
+    width: 40%;
+    font-size: 18px;
+    table-layout: fixed; /* Ensure fixed table layout */
+    background-color: rgba(0, 0, 255, 0.3);
+    left: 3%;
+    position: fixed;
+    top: 18%;
+    border-radius: 1%;
+    height: 36%;
+}
+
+td {
+    width: 20%; /* Each column takes up 1/8th of the table width */
+    height: 20px;  /* Set a fixed height to prevent resizing */
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Nasalization', sans-serif;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.small-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+tbody tr td {
+    text-align: center;
+    flex-basis: 12.5%;
+}
+
+.gold-border {
+    border: 5px solid gold;
+}
+
+.silver-border {
+    border: 5px solid silver;
+>>>>>>> 7b54b968cbd6d52e8e39de2750237ad58d8c4da1
 }
 
 /* Styling for the right frame container */
@@ -132,13 +192,13 @@ video {
 /* NEWS ALERT FEED */
 .news-bar {
     position: fixed;
-    bottom: 5%;
+    bottom: 3%;
     padding: 10px 20px;
     width: 100%;
     /* Scrolling Text Background Colour */
     background-color: rgba(0, 0, 255, 0.3);
     /* Scrolling Text Colour */
-    color: rgb(251, 250, 17);
+    color: rgb(251, 250, 64);
     font-size: 30px;
     font-family: 'Bebas-Neue', sans-serif;
     font-style: italic;
@@ -168,7 +228,7 @@ video {
 /* MUSIC VISUALIZER */
 .visualizer {
     position: fixed;
-    bottom: 17%;
+    bottom: 14%;
     left: 3%;
     z-index: 2;
 }
@@ -176,7 +236,7 @@ video {
 /* Visualizer Text */
 .visualizer-text {
     position: fixed;
-    bottom: 10%;
+    bottom: 7%;
     left: 3%;
     font-size: 40px;
     /* Large font size */

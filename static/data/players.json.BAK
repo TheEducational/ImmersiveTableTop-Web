@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Stefan",
+    "score": 6,
+    "objectives": [
+      "Have 4 or more structures.",
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have units in 3 systems that do not contain planets.",
+      "Control 2 planets that have attachments."
+    ],
+    "avatar": "/static/UI/federation-of-sol.png"
+  },
+  {
+    "name": "Joseph",
+    "score": 2,
+    "objectives": [
+      "Have 4 or more structures.",
+      "Spend 3 influence, 3 resources, and 3 trade goods."
+    ],
+    "avatar": "/static/UI/l1z1x-mindnet.png"
+  },
+  {
+    "name": "Adam",
+    "score": 6,
+    "objectives": [
+      "Have 4 or more structures.",
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Spend 5 Trade Goods"
+    ],
+    "avatar": "/static/UI/emirates-of-hacan.png"
+  },
+  {
+    "name": "Max",
+    "score": 2,
+    "objectives": [
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have 4 or more structures."
+    ],
+    "avatar": "/static/UI/embers-of-muaat.png"
+  },
+  {
+    "name": "Greg",
+    "score": 2,
+    "objectives": [
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have 4 or more structures."
+    ],
+    "avatar": "/static/UI/embers-of-muaat.png"
+  },
+  {
+    "name": "Michael",
+    "score": 2,
+    "objectives": [
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have 4 or more structures."
+    ],
+    "avatar": "/static/UI/embers-of-muaat.png"
+  },
+  {
+    "name": "Bob",
+    "score": 2,
+    "objectives": [
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have 4 or more structures."
+    ],
+    "avatar": "/static/UI/embers-of-muaat.png"
+  },
+  {
+    "name": "Adam",
+    "score": 2,
+    "objectives": [
+      "Spend 3 influence, 3 resources, and 3 trade goods.",
+      "Have 4 or more structures."
+    ],
+    "avatar": "/static/UI/clan-of-saar.png"
+  }
+]

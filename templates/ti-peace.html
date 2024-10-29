@@ -33,14 +33,21 @@
 
     <!-- Left frame overlay -->
     <div class="overlay left-frame">
-        <img src="{{ url_for('static', filename='UI/8925942.png') }}" class="frame-img">
-
-        <!-- Blue semi-transparent box -->
-        <!--<div class="blue-box"></div> -->
 
         <!-- Scoreboard -->
-        <div class="leaderboard" id="leaderboard"></div>
-        <script src="{{ url_for('static', filename='js/scoreboard.js') }}"></script>
+        <div class="table-container">
+            <table id="playerTable">
+                <tbody>
+
+                </tbody>
+            </table>
+            <table id="objectivesTable">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <script src="{{ url_for('static', filename='js/leaderboard.js') }}"></script>
     </div>
 
     <!-- Right frame overlay-->
@@ -82,12 +89,8 @@
     <div class="visualizer">
         <!-- Music Selection -->
         <script>
-            // List of songs (file paths)
-            const music = [
-            {% for filename in music %}
-                "{{ url_for('static', filename=filename) }}"{% if not loop.last %}, {% endif %}
-            {% endfor %}
-            ];
+            musicFileURL = "{{ url_for('static', filename='data/music.json') }}"
+            gameState = "Peace"
         </script>
         <canvas id="visualizer" width="600" height="100"></canvas>
         <audio id="visualizer-sound" preload="auto" autoplay>
@@ -101,7 +104,7 @@
         <script> 
             var selectedColor = 'rgba(0, 0, 255, 0.6)' 
         </script> 
-        <script src="{{ url_for('static', filename='js/music.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/music_player.js') }}"></script>
     </div>
 
 </body>

@@ -1,0 +1,157 @@
+
+/* Ensure the body and html elements take up the full viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    /*background-color: black;*/
+}
+
+/* Title Text */
+.title-text {
+    text-align: center; /* Center the text */
+    font-size: 90px; /* Large font size */
+    font-family: 'Nasalization', sans-serif;
+    color: rgb(0, 0, 255); /* Change to your desired color */
+    margin: 40px 0; /* Add some spacing above and below */
+    z-index: 10; /* Ensure it is above other elements */
+    position: relative; /* To keep it in the normal flow */
+}
+
+/* Fullscreen video */
+video {
+    position: absolute; /* Position the video absolutely */
+    top: 0;
+    left: 0;
+    width: 100%;      /* Full viewport width */
+    height: 100%;     /* Full viewport height */
+    object-fit: cover; /* Cover the area without distortion */
+    z-index: -1;      /* Send the video to the back */
+}
+
+ /* Overlay styles for UI elements */
+.overlay {
+    position: absolute;
+    z-index: 1; /* Bring overlays to the front */
+}
+
+.left-frame {
+    position: absolute;
+    left: 2%; /* Distance from the right edge of the screen */
+    top: 18%;
+    width: 45%;
+    height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.blue-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent red */
+    z-index: 1; /* Make sure it's above the video but inside the frame */
+}
+
+/* Styling for the right frame container */
+.right-frame {
+    position: absolute;
+    right: 2%; /* Distance from the right edge of the screen */
+    top: 0;
+    width: auto;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.right-frame-video {
+    position: absolute;
+    top: -1%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    z-index: 1; /* make sure the video is on top of the gif*/
+    clip-path: inset(0 4% 0 4%); /* video cropping */
+}
+
+/* Specific styles for the frame image */
+.frame-img {
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    /*object-fit: contain; /* Ensure it maintains aspect ratio */
+    z-index: 2;
+}
+
+/* Specific styles for the No Signal GIF */
+.no-signal {
+    position: absolute;
+    top: -1%;
+    left: 0;
+    width: 100%; /* Make the GIF fit the right frame */
+    height: 100%;
+    object-fit: contain; /* Maintain the aspect ratio of the GIF */
+    z-index: 1; /* Make sure the GIF appears below the frame */
+    clip-path: inset(0 4% 0 4%); /* GIF cropping */
+}
+
+/* NEWS ALERT FEED */
+.news-bar {
+    position: fixed;
+    bottom: 5%;
+    padding: 10px 20px;
+    width: 100%;
+    /* Scrolling Text Background Colour */
+    background-color: rgba(0, 0, 255, 0.3);
+    /* Scrolling Text Colour */
+    color: rgb(251, 250, 64);
+    font-size: 30px;
+    font-family: 'Bebas-Neue', sans-serif;
+    font-style: italic;
+    overflow: hidden;
+    white-space: nowrap;
+    /* Should be high Z-index so its always ontop */
+    z-index: 99999;
+}
+
+.news-content {
+    display: inline-block;
+    /* Animation to scroll the text and the speed in Seconds */
+    animation: scroll 400s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(15%); /* Lower percentage ensures the text starts scrolling already on the screen. */
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* MUSIC VISUALIZER */
+.visualizer {
+    position: fixed;
+    bottom: 17%;
+    left: 3%;
+    z-index: 2;
+}
+
+/* Visualizer Text */
+.visualizer-text {
+    position: fixed;
+    bottom: 10%;
+    left: 3%;
+    font-size: 40px; /* Large font size */
+    font-family: 'Nasalization', sans-serif;
+    font-style: italic;
+    color: rgb(0, 0, 220); /* Change to your desired color */
+}

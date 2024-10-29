@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Control Panel</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6A0DAD;
+        }
+
+        #musicList {
+            width: 100%;
+            overflow: auto; /* Allow the body to scroll instead of the table */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Space between title and table */
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4B0082;
+            color: #ffffff;
+        }
+
+        /* Ensure the table takes all available space without limiting height */
+        tr {
+            height: 50px; /* Example height for rows, adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Management</h1>
+
+    <!-- Currently Playing -->
+    <div id="currentlyPlaying"></div>
+
+    <!-- Music List -->
+    <div id="musicList">
+        <!-- Dynamic music items will be inserted here -->
+    </div>
+    
+    <button id="backToMenuBtn">Back To Menu</button>
+
+    <!-- Load music file -->
+    <script>
+        var musicFileUrl = "{{ url_for('static', filename='data/music.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/music.js') }}"></script>
+</body>
+</html>

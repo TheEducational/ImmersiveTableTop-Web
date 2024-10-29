@@ -1,0 +1,61 @@
+async function loadPlayerData() {
+    try {
+        const response = await fetch('/static/data/players.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const players = await response.json();
+        displayPlayerTable(players);
+    } catch (error) {
+        console.error('Error loading player data:', error);
+    }
+}
+
+function displayPlayerTable(players) {
+    const leftFrame = document.querySelector('.left-frame');
+    leftFrame.innerHTML = ''; // Clear existing content
+
+    const table = document.createElement('table');
+
+    // Create rows for each player
+    players.forEach(player => {
+        const row = document.createElement('tr');
+
+        // Player avatar
+        const avatarCell = document.createElement('td');
+        const avatarImg = document.createElement('img');
+        avatarImg.src = player.avatar;
+        avatarCell.appendChild(avatarImg);
+        row.appendChild(avatarCell);
+
+        // Player name
+        const nameCell = document.createElement('td');
+        nameCell.textContent = player.name;
+        row.appendChild(nameCell);
+
+        // Player score
+        const scoreCell = document.createElement('td');
+        scoreCell.textContent = `${player.score}`;
+        row.appendChild(scoreCell);
+
+        // Player objectives
+        const objectivesCell = document.createElement('td');
+        const objectivesList = document.createElement('ul');
+        player.objectives.forEach(objective => {
+            const listItem = document.createElement('li');
+            listItem.textContent = objective;
+            objectivesList.appendChild(listItem);
+        });
+        objectivesCell.appendChild(objectivesList);
+        row.appendChild(objectivesCell);
+
+        // Append row to table
+        table.appendChild(row);
+    });
+
+    // Append table to the left frame
+    leftFrame.appendChild(table);
+}
+
+// Call the loadPlayerData function periodically to refresh the table
+setInterval(loadPlayerData, 1000); // Update every second
