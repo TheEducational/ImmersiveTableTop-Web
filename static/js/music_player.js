@@ -63,7 +63,7 @@ async function fetchMusicData() {
 
 async function postCurrentlyPlaying(songId, currentTime, maxTime) {
     try {
-        const response = await fetch('/admin/music', {
+        const response = await fetch('currentPlayingSong', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

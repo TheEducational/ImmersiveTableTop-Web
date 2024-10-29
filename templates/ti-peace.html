@@ -91,6 +91,7 @@
         <script>
             musicFileURL = "{{ url_for('static', filename='data/music.json') }}"
             gameState = "Peace"
+            currentPlayingSong = "{{ url_for('static', filename='admin/music.json') }}"
         </script>
         <canvas id="visualizer" width="600" height="100"></canvas>
         <audio id="visualizer-sound" preload="auto" autoplay>
